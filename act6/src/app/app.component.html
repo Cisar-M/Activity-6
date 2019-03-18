@@ -1,0 +1,33 @@
+<h1>Reporting</h1>
+<div>
+  <mat-form-field>
+    <mat-select [(value)]="selection">
+      <mat-option *ngFor="Let option of options"[value]="option.id">{{option.text}}</mat-option> 
+      </mat-select>
+  </mat-form-field>
+  <br><br>
+<button mat-raised-button color="primary"(click)="submitRequest()">GENERATE</button>
+<button mat-raised-button color="acent"(click)="downloadRequest(1)">DOWNLOAD PDF</button>
+<button mat-raised-button color="acent"(click)="downloadRequest(2)">DOWNLOAD WORD</button>
+</div>
+<div *ngif="chart"class="reportChart">
+  <canvas id="canavas">{{ chart }}</canvas>
+
+</div>
+<div *ngFor="Employee">
+  <div class="Sales">
+    <div *ngFor = "let item of Employee">
+      <table class ="container">
+        <caption>Sales per branch</caption>
+        <tr>
+        <th>Employee</th>
+        <th>Sales</th>
+      </tr>
+      <tr *ngFor="let Sales of item.TotalSales">
+        <td>{{Sales.Employee}}</td>
+        <td>{{Sales.Sales}}</td>
+      </tr>
+      </table>
+    </div>
+  </div>
+</div>
